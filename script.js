@@ -67,7 +67,6 @@ const calculate = () => {
         case "/":
              result = prevNumber / currentNumber
             break
-       
         default:
             break
     }
@@ -101,5 +100,3 @@ inputDecimal = (dot) => {
     }
     currentNumber += dot
 }
-
-
