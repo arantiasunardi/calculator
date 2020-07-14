@@ -67,8 +67,7 @@ const calculate = () => {
         case "/":
              result = prevNumber / currentNumber
             break
-        case "%":
-            result = currentNumber/100
+       
         default:
             break
     }
@@ -101,4 +100,18 @@ inputDecimal = (dot) => {
         return
     }
     currentNumber += dot
+}
+
+const percentage = document.querySelector('.percentage')
+
+percentage.addEventListener('click', () => {
+    percentageNumber()
+    updateScreen(currentNumber)
+})
+
+const percentage = () => {
+    if(currentNumber === '0') {
+        return
+    }
+    currentNumber = currentNumber / 100
 }
