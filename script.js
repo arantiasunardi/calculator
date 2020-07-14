@@ -1,41 +1,38 @@
-const calculatorScreen = document.querySelectorAll('.calculator-screen')
+const numbers = document.querySelectorAll(".number")
+numbers.forEach((number) => {
+    number.addEventListener("click", (event) => {
+        updateScreen(event.target.value)
+    })
+    
+})
 
-const updateScreen = (number)=>{
-    calculatorScreen.value=number
+const calculatorScreen = document.querySelector('.calculator-screen')
+const updateScreen = (number) => {
+    calculatorScreen.value = number
 }
 
-const numbers= document.querySelectorAll(".number")
+const inputNumber = (number) => {
+    if(currentNumber === '0') {
+        currentNumber = number
+    } else {
+        currentNumber += number
+    }
+        
+}
 
+}
 
-numbers.forEach( (number)=>{
-    number.addEventListener("click", (event)=> {
+numbers.forEach((number) => {
+    number.addEventListener("click", (event) => {
         inputNumber(event.target.value)
-        updateScreen(currentNumber) 
+        updateScreen(currentNumber)
     })
 })
 
-const calculatorScreen = document.querySelectorAll('.calculator-screen')
-
-const updateScreen = (number)=>{
-    calculatorScreen.value=number
-}
-
-let prevNumber=''
-let calculatorOperator=''
-let currentNumber='0'
-
-const inputNumber= (number)=>{
-    if (currentNumber === '0') {
-        currentNumber = number
-    } else {
-    currentNumber += number
-    }
-}   
-
 const operators = document.querySelectorAll(".operator")
 
-operators.forEach((operator)=>{
-    operator.addEventListener("click", (event)=>{
+operators.forEach((operator) => {
+    operator.addEventListener("click", (event) => {
         inputOperator(event.target.value)
     })
 })
@@ -49,7 +46,7 @@ const inputOperator = (operator) => {
 const equalSign = document.querySelector('.equal-sign')
 
 equalSign.addEventListener('click', () => {
-    calculate()
+    calculate ()
     updateScreen(currentNumber)
 })
 
@@ -60,13 +57,13 @@ const calculate = () => {
             result = parseInt(prevNumber) + parseInt(currentNumber)
             break
         case "-":
-            result = parseInt(prevNumber) - parseInt(currentNumber)
+            result = prevNumber - currentNumber
             break
         case "*":
-            result = parseInt(prevNumber) * parseInt(currentNumber)
+            result = prevNumber * currentNumber
             break
         case "/":
-            result = parseInt(prevNumber) / parseInt(currentNumber)
+             result = prevNumber / currentNumber
             break
         default:
             break
@@ -74,3 +71,22 @@ const calculate = () => {
     currentNumber = result
     calculationOperator = ''
 }
+
+const clearBtn = document.querySelector('.all-clear')
+
+clearBtn.addEventListener('click', () => {
+    clearAll()
+    updateScreen(currentNumber)
+})
+
+const clearAll = () => {
+    prevNumber = ''
+    calculationOperator = ''
+    currentNumber = '0'
+}
+
+const decimal = document.querySelector('.decimal')
+
+decimal.addEventListener('click', (event) => {
+    console.log(event.target.value)
+})
